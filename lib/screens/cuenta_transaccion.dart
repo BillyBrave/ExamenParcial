@@ -35,6 +35,19 @@ class CuentaTransaccionState extends State<CuentaTransaccion> {
     return Scaffold(
       appBar: AppBar(
         title: Text('TRANSACCION para : '+cuenta.numero),
+        actions: <Widget>[
+          PopupMenuButton<String>(
+            onSelected: select,
+            itemBuilder: (BuildContext context) {
+              return choices.map((String choice){
+                return PopupMenuItem<String>(
+                  value: choice,
+                  child: Text(choice),
+                );
+              }).toList();
+            },
+          ),
+        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
